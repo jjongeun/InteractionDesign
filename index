@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    
+      body {
+        margin: 20px;
+        background-color:darkturquoise;
+        font-family: Noto Sans CJK KR;
+      }
+      
+      h1 {
+        background-color:aliceblue;
+        padding : 20px 20px 20px 20px;
+        color:blue;
+        border-radius: 10px;
+      }
+      
+      h3 {
+        background-color: aliceblue;
+        padding : 10px 10px 10px 10px;
+        color: blue;
+        border-radius: 10px;
+      }
+      
+      p {
+        margin-left: 15px;
+        font-size: 15px;
+        line-height: 16px;
+        color: white;
+      }
+      
+      div {
+        margin-left: 18px;
+      }
+      
+      span {
+        background-color: yellow;
+        color:black;
+        padding: 3px;
+        border-radius: 5px;
+        font-size: 13px;
+      }
+      
+      .node circle {
+        fill: #fff;
+        stroke: #3333e3;
+        stroke-width: 1.5px;
+      }
+
+      .node {
+        font: 10px sans-serif;
+      }
+
+      .link {
+        fill: none;
+        stroke: #e3e3e3;
+        stroke-width: 1.5px;
+      }
+      
+      #left {
+        display: inline-block;
+        width: 300px;
+      }
+      
+      #right {
+        display: inline-block;
+        position: absolute;
+        overflow-y: scroll;
+        width: 700px;
+        height: 700px;
+        background-color: yellow;
+        margin-left: -20px;
+      }
+      
+      text {
+		font-family: sans-serif;
+        font-size: 12px;
+		fill: white;
+			}
+      
+      .picture{
+        margin-top: 20px;
+      }
+      
+      p.text{
+        color: black;
+        line-height: 22px;
+        margin-right: 40px;
+      }
+      
+      div#cate{
+        margin-left: -10px;
+        height: auto;
+      }
+
+    </style>
+    <script src="http://d3js.org/d3.v3.js"></script>
+  </head>
+  <body>
+    <h1>Catch your graphical preference in TRENDLIST</h1>
+    <h3>What I'm gonna do?</h3>
+    <p>이 페이지는 'TrendList'의 정보와, D3.js의 시각화를 이용하여 당신의 그래픽적인 선호도를 알아보기 위해 제작되었습니다.</p>
+    
+    <h3>What is TrendList? <span><a href="http://www.trendlist.org/" target="_blank">Click to go</a></span></h3>
+    
+    <p>패션이나 음악처럼, 그래픽 디자인 또한 시대적 경향에 영향을 받습니다. 이는 디지털 정보가 빛의 속도로 전달되는 이 세계에서 더 강해지죠.</p>
+    <p>Trend List는 그래픽 디자인 경향을 검색하고, 이름붙이며 분류합니다.</p>
+    <p>또한 언제 어디서 그것이 부흥하며, 어떤 국가에서 유명하고, 시간이 흐르면서 어떻게 발전하였는지 조명합니다.</p>
+    <p>Trend List는 포스터, 책, 카탈로그, 잡지, 앨범커버 등을 다룹니다.</p>
+    <p>오늘날의 많은 프로페셔널한 디자이너들이 클라이언트 최적화 된 '개념적인' 디자인을 창작하는 것을 관찰하는 것은 매우 흥미롭습니다.</p>
+    <p>그러한 디자인은 요즘은 별로 중요하지 않아보이는 정형화된 형태보다는, 내용 중심이죠.</p>
+    <p>하지만 Trend List는 다른 각도에서 그래픽 디자인을 탐험합니다.</p>
+    <p>작업의 내용을 무시하고, 오로지 형태로만 그것을 분석합니다.</p>
+    <p>이 사이트의 공식적 특성을 기반하여, 작업들을 분류하고 카테고리화 하였습니다.</p>
+    <p>Trend List와 함께 그래픽 디자인을 탐험하세요. 자신에게 영감을 주고, 늘 'Trendy'하세요!</p>
+    
+    <h3>33 categorys of TRENDLIST</h3>
+    <p><span id="aaa">클릭</span>하면 오른쪽 옐로우 박스에서 대표 작업과 설명을 확인할 수 있습니다.</p>
+    <p>스크롤을 내림에 따라 왼쪽 카테고리 리스트에서 이름을 확인할 수 있습니다.</p>
+      
+    <div id= 'cate'>
+      <div id="left">
+        <div class="lt">Left, Right, Up & Down</div>
+        <div class="lt">Center Aligned</div>
+        <div class="lt">Frame</div>
+        <div class="lt">Exposed Content</div>
+        <div class="lt">Various Formats</div>
+        <div class="lt">Underlined</div>
+        <div class="lt">Letterspace</div>
+        <div class="lt">IK Blue</div>
+        <div class="lt">Slash</div>
+        <div class="lt">Staircase</div>
+        <div class="lt">Neon Colors</div>
+        <div class="lt">Scanned</div>
+        <div class="lt">Empty</div>
+        <div class="lt">Hyphens</div>
+        <div class="lt">Circle</div>
+        <div class="lt">Stretched</div>
+        <div class="lt">Wiggles</div>
+        <div class="lt">Table of Contents</div>
+        <div class="lt">Gradients</div>
+        <div class="lt">Slant</div>
+        <div class="lt">Text on Cover</div>
+        <div class="lt">Type on Path</div>
+        <div class="lt">Highlighted</div>
+        <div class="lt">Randomized</div>
+        <div class="lt">Strikethrough</div>
+        <div class="lt">Diagonal Pattern</div>
+        <div class="lt">Rhombus</div>
+        <div class="lt">Infinity Shapes</div>
+        <div class="lt">Ancient Statues</div>
+        <div class="lt">Still Life</div>
+        <div class="lt">Stars</div>
+        <div class="lt">Mickey Hands</div>
+        <div class="lt">Diamonds</div>
+      </div>
+      <div id="right"></div>
+    </div>
+
+
+    <h3>12 Designers selected</h3>
+    <p>다음은 엄선한 12 디자이너입니다. 클릭해서 디자이너의 작품들을 탐험해 보세요. 그리고 마음에 드는 디자이너를 마음 속으로 찜꽁하세요.</p>
+    <div>
+      <a href="http://www.trendlist.org/studios/akatre" target="_blank">Akatre</a><br>
+      <a href="http://www.trendlist.org/studios/big" target="_blank">BIG</a><br>
+      <a href="http://www.trendlist.org/studios/caroline-fabes" target="_blank">Caroline Fabès</a><br>
+      <a href="http://www.trendlist.org/studios/accent-graphe" target="_blank">Accent Graphe</a><br>
+      <a href="http://www.trendlist.org/studios/prill-vieceli-cremers" target="_blank">Prill Vieceli Cremers</a><br>
+      <a href="http://www.trendlist.org/studios/clement-rouzaud" target="_blank">Clément Rouzaud</a><br>
+      <a href="http://www.trendlist.org/studios/abbie-winters" target="_blank">Abbie Winters</a><br>
+      <a href="http://www.trendlist.org/studios/eyebodega" target="_blank">EyeBodega</a><br>
+      <a href="http://www.trendlist.org/studios/christopher-sleboda" target="_blank">Christopher Sleboda</a><br>
+      <a href="http://www.trendlist.org/studios/fnt" target="_blank">fnt</a><br>
+      <a href="http://www.trendlist.org/studios/ordinary-people" target="_blank">Ordinary People</a><br>
+      <a href="http://www.trendlist.org/studios/workroom" target="_blank">Workroom</a><br>
+    </div>
+    
+    <h3>TRENDLIST visualization in D3.js Partition</h3>
+    <p>12 디자이너의 작품들이 속하는 trendlist를 D3.js partition layout을 이용하여 시각화하였습니다.</p>
+    <p>정가운데는 Designer, 그 다음 part는 12명의 디자이너, 그 다음 part는 각 디자이너의 작품들이며, 마지막 part는 각 작품이 속하는 trend입니다.</p>
+    <p>좀 더 자세히 보고싶은 part를 클릭하면 줌인 하여 새로운 partition이 만들어집니다.</p>
+    <p>줌아웃 하고싶다면 가운데 동그라미를 클릭하세요.</p>
+      <div id="prefer"></div>
+    
+    <h3>Select some designers by YOUR graphical preference!</h3>
+    <p>잘 보셨나요? 그렇다면 이제 자신의 그래픽 취향에 맞는 디자이너를 선택해 보세요.</p>
+    <label><input class="dsnr" type="checkbox" value="Akatre">Akatre</label>
+    <label><input class="dsnr" type="checkbox" value="BIG">BIG</label>
+    <label><input class="dsnr" type="checkbox" value="Caroline Fabès">Caroline Fabès</label>
+    <label><input class="dsnr" type="checkbox" value="Accent Graphe">Accent Graphe</label>
+    <label><input class="dsnr" type="checkbox" value="Prill Vieceli Cremers">Prill Vieceli Cremers</label>
+    <label><input class="dsnr" type="checkbox" value="Clément Rouzaud">Clément Rouzaud</label>
+    <label><input class="dsnr" type="checkbox" value="Abbie Winters">Abbie Winters</label>
+    <label><input class="dsnr" type="checkbox" value="EyeBodega">EyeBodega</label>
+    <label><input class="dsnr" type="checkbox" value="Christopher Sleboda">Christopher Sleboda</label>
+    <label><input class="dsnr" type="checkbox" value="fnt">fnt</label>
+    <label><input class="dsnr" type="checkbox" value="Ordinary People">Ordinary People</label>
+    <label><input class="dsnr" type="checkbox" value="Workroom">Workroom</label>
+    
+    
+    <h3>Then I'll show your own 'Designer Tree' using D3.js</h3>
+    <p>당신의 선택을 통해 당신만의 D3.js dataset이 만들어졌습니다!</p>
+    <p>D3.js의 tree layout을 이용해서 당신만의 'Designer Tree' 또한 만들어졌죠.</p>
+    <p>디자이너들의 하위요소로 각각의 작품명을 가집니다. 또한 최하위요소로 각 작품들이 속하는 trendlist를 보여줍니다.</p>
+    <p>맨 오른쪽의 trendlist들을 자세히 살펴보고, 어떤 trend가 자주 나타나는지 확인해 보세요.</p>
+    <div id="user"></div>
+    
+    
+    <h3>Conclusion</h3>
+    <p>지금까지 TrendList의 dataset과 D3.js 시각화를 이용하여 당신의 그래픽적인 선호도를 알아보았습니다.</p>
+    <p>당신이 어떤 'Trend'를 선호하는지 대략적인 감이 잡혔나요?</p>
+    <p>이 페이지가 당신의 그래픽 작업에 도움이 되었으면 좋겠습니다.</p>
+    
+  </body>
+  
+  
+  
+  
+  
+  
+<script>
+
+
+
+      
+  //옐로우박스 안에 들어가는 트랜드리스트 목록들
+  var list = [
+            {id: 1, text: 'This typography trend consists of placing words on the sides of the format. Composition seems so avant-garde, but it has one major disadvantage. It forced people to read in four different directions. which can be fun, but not everytime. ', imgsrc: 'http://www.trendlist.org/img/images/big/4fe21155f42aaedcc0db964e8ee90d8f.gif'},
+            {id: 2, text: 'Massive simple typography aligned in the center of format. The most commonly used in one color. This trend may have its roots in graphic design from the early 20th century, or may also be meant as irony and the desire for liberation from the well-ordered Swiss typography.', imgsrc: 'http://www.trendlist.org/img/images/big/89aea583e7f244f9f0ea2ed589884d97.jpg'},
+            {id: 3, text: 'The frame is used as an additional element that helps to highlight the inner content. In many cases it is accompanied by other trends as underlined and central aligned typography.', imgsrc: 'http://www.trendlist.org/img/images/big/8ead94501ac55a2b15c4b163a69dfa89.jpg'},
+            {id: 4, text: 'One of the most popular current trends, usually seen on book and magazine covers, where images are located in different compositions and reveal the inner content. This kind of design goes very well together with visuals for the art exhibitions where all the artworks are indexed on one poster. Typography is usually placed over this layer. ', imgsrc: 'http://www.trendlist.org/img/images/big/5890016bde4a734d4bb5b716cdca975e.jpg'},
+            {id: 5, text: 'One book is complied from different sizes of pages and various types of paper. Sometimes is separates whole printed matter to independent parts like chapters for example. This form is sometimes so overused, that book or catalog that has lost its function and there is no way not browse it easily. ', imgsrc: 'http://www.trendlist.org/img/images/big/5f2852517385a8da1b4d4bfa4cbdbae0.jpg'},
+            {id: 6, text: 'Underlined typography works very effectively and also very efficiently. Words and whole sentences are usually underlined without any purpose, but it might attract the attention of the audience and communicate the message. This form is widely spread around the whole world.', imgsrc: 'http://www.trendlist.org/img/images/big/66841b2e8e64644f4312ec08046836f9.jpg'},
+            {id: 7, text: 'Words divided into individual letters or syllables and arranged randomly. The trend is very popular especially in the last two years.', imgsrc: 'http://www.trendlist.org/img/images/big/b5b710f9bf95ff2f7312c2f8e8db387f.jpg'},
+            {id: 8, text: 'International Klein Blue is dark ultramarine blue color, well-known due to French artist Yves Klein. The intensive color become very popular not only in graphic design, but also in fashion.', imgsrc: 'http://www.trendlist.org/img/images/big/0eb2214b0c0d95d58989ecaa7c31f620.png'},
+            {id: 9, text: 'Maybe the most trendy shape ever. Slash appears as a diagonal stroke from one corner to the opposite. It goes across the whole bookcover or poster, more often from left to right.', imgsrc: 'http://www.trendlist.org/img/images/big/04ac9f56f708e8338b9d8329de8555bf.png'},
+            {id: 10, text: 'Diagonal arrangement of typography reminding the stairs, goings up or down across the format. ', imgsrc: 'http://www.trendlist.org/img/images/big/6ea392337197e4de8be8641caed857ca.jpg'},
+            {id: 11, text: 'Bright, vivid, reflective, eye-catching colors are very popular. These colors are often used when screen printing. It provokes and has powerful impact on eyes. ', imgsrc: 'http://www.trendlist.org/img/images/big/8c23fa64fdb6eb7de0d2afee9fc43878.jpg'},
+            {id: 12, text: 'Distorted typography is achieved by using a scanner. Experimental output guaranteed.', imgsrc: 'http://www.trendlist.org/img/images/big/181cabedd8822f2f8f83308ab676842c.jpg'},
+            {id: 13, text: 'Usually bookcovers with simple typography and lots of empty space. This trend can be dangerous, because the EMPTY space must be well-designed. If not, It can be somewhat hollow.', imgsrc: 'http://www.trendlist.org/img/images/big/e57ee3eaf449c95fd9717cb38cfd901d.png'},
+            {id: 14, text: 'Words divided in two or more lines.. Sometimes the words are divided because of filling fomat, but sometimes it is used quite illogically, without any particular reason.', imgsrc: 'http://www.trendlist.org/img/images/big/b64e43dcc63830a638f0ee9295234507.gif'},
+            {id: 15, text: 'The letter, logo or any different kind of additional information placed in a circle. Design is not usually built on this element directly, but it is its integral part. It rather contains secondary data such as date, etc... The shape of a circle is very variable and it looks good anywhere. It can be placed over over image, over typography and so on. It also fills empty corners.', imgsrc: 'http://www.trendlist.org/img/images/big/a7b4e90686332f7d993437308ead4a74.jpg'},
+            {id: 16, text: 'Many designers use stretched graphic elements in their graphic design works. Especially this is applied to typography in many cases.', imgsrc: 'http://www.trendlist.org/img/images/big/3c6531428432dff21bc82a14373e6e36.jpg'},
+            {id: 17, text: 'WiggleWiggleWiggle!', imgsrc: 'http://www.trendlist.org/img/images/big/78f1a4c10c7712224da374f027aa45f2.jpg'},
+            {id: 18, text: 'Name index, table of contents or bulletpoints are located directly on the cover of book/magazine. It gives the impression of a conceptual approach.', imgsrc: 'http://www.trendlist.org/img/images/big/8a86e9858d329f710aa58a490cf5ef1c.jpg'},
+            {id: 19, text: 'Any graphical works which is created by using gradients. This type of works are very popular not only these days, but since the graphic started. The degree of inclination, or the rate of ascent or descent, in a highway, railroad, etc.', imgsrc: 'http://www.trendlist.org/img/images/big/2ee06be542ad205a82ad59c9c9e6aa5f.png'},
+            {id: 20, text: 'Slant is slope or lean in a particular direction. diverge or cause to diverge from the vertical or horizontal.to veer or angle away from a given level or line, especially from a horizontal slope. to have or be influenced by a subjective point of view, bias, personal feeling or inclination, etc. (usually followed by toward).', imgsrc: 'http://www.trendlist.org/img/images/big/f4b9c31c583c8f483905a39247bdb7e3.png'},
+            {id: 21, text: 'Text on Cover. This is easy and simple design, but the text is so important that can create the real design. Designers must think about micro typography that makes the whole design of using this trend.', imgsrc: 'http://www.trendlist.org/img/images/big/f75a067828a0426a9b08bbe4c2805253.jpg'},
+            {id: 22, text: 'Type on Path is one of the tools in Adobe Illustrator. The path can be changed freely, and types moreover.Type on a path flows along the edge of an open or a closed path. When you enter text horizontally, the characters are parallel to the baseline. When you enter text vertically, the characters that are perpendicular to the baseline. In either case, the text flows in the direction in which points were added to the path.', imgsrc: 'http://www.trendlist.org/img/images/big/7c89bd2261006b0fb80532735db7f133.png'},
+            {id: 23, text: 'Inspiration for these forms probably comes right from graphic design programs and text editors. Otherwise quite boring and dull typography suddenly gets the right contemporary appearance.', imgsrc: 'http://www.trendlist.org/img/images/big/856d52a7708c27b847b241f179cb5674.jpg'},
+            {id: 24, text: 'Some elements are scattered very freely. This type of design is dangerous sometime. If it is used in timely manner, it can be gorgeous. But if it is used in bad time, It sucked in highly probablity.', imgsrc: 'http://www.trendlist.org/img/images/big/a9369dd9afcce1d21fd81661e194406d.jpg'},
+            {id: 25, text: 'The one of the basic typography style features in each graphic editor that became surely a trend. The striketrough sentences or the censored words started to appear in contemporary graphic design in a bigger scale.', imgsrc: 'http://www.trendlist.org/img/images/big/2d536d6ab33549eeea335c94f6e66c1e.jpg'},
+            {id: 26, text: 'Lines going usually at 45 degrees angle. Inspiritation comes from the stripes used on caution places signboards. Eye-catching, strong expression, always works great when you need to fill the white space. ', imgsrc: 'http://www.trendlist.org/img/images/big/3acbe680ced39458fd03e2a0cfb56f44.jpg'},
+            {id: 27, text: 'In some Central European countries rhombus is considered as a simplified symbol for the vagina. For this reason, designers in these countries do not use it very often, even if they wanted. Despite this, it surely belongs to the current trends in graphic design.', imgsrc: 'http://www.trendlist.org/img/images/big/7de1d7c67ef86e22a90dfae9919a065b.jpg'},
+            {id: 28, text: 'This is how it looks when geometry and mathematics influeced graphic designers. Escher-like logical nonsences are mixed with the other graphic design trends, for example night sky backgrounds or center aligned typography.', imgsrc: 'http://www.trendlist.org/img/images/big/6f39eb723a1f98f8cf276c7e5862cabe.png'},
+            {id: 29, text: 'Ancient Statues of or in time long past, especially before the end of the Western Roman Empire a.d. 476. This trend can be used to present traditional graphical sense, or evoke majestic and grand feeings.', imgsrc: 'http://www.trendlist.org/img/images/big/078311e63c20904ad7e6f6ca9a12d16d.png'},
+            {id: 30, text: 'Everything placed on the pile and photographed. The instant way how to create trendy looking poster.', imgsrc: 'http://www.trendlist.org/img/images/big/3ddcf021b182e9dc2dc434defa297192.jpg'},
+            {id: 31, text: 'The fascination with the sky during the night returned and seems to be one of the contemporary trends. Often with infinity shapes, triangles or thin lines aligned in the central composition. It is interesting that this trend is mostly associated with music.', imgsrc: 'http://www.trendlist.org/img/images/big/71c1c7d082e5a66e668030732ee39978.jpg'},
+            {id: 32, text: 'Graphic works made by using mickey hands. We do not know why many people love to use the cuty mickey hands. it is just popular and familiar.', imgsrc: 'http://www.trendlist.org/img/images/big/fb9b4ab018d2991de45c65bdc60a0935.jpg'},
+            {id: 33, text: 'Diamonds are beautiful stones. The shape of the crystal and its triangulary polygonal look made one of the iconic symbols in graphic design today.', imgsrc: 'http://www.trendlist.org/img/images/big/5b95978f3f4e407eb0b335746a4ba872.jpg'}];
+  
+
+  //tree layout 만드는 d3 함수
+  var margin = {top: 20, right: 20, bottom: 20, left: 120},
+      width = 1300 - margin.right - margin.left,
+      height = 1800 - margin.top - margin.bottom;
+
+  var i = 0,
+      duration = 750,
+      root;
+
+  var tree = d3.layout.tree()
+      .size([height, width]);
+
+  var diagonal = d3.svg.diagonal()
+      .projection(function(d) { return [d.y, d.x]; });
+
+  var svg = d3.select("#user").append("svg")
+      .attr("width", width + margin.right + margin.left)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  d3.json("ctreeDesigner.json", function(error, flare) {
+    if (error) throw error;
+
+    root = flare;
+    root.x0 = height / 2;
+    root.y0 = 0;
+
+    function collapse(d) {
+      if (d.children) {
+        d._children = d.children;
+        d._children.forEach(collapse);
+        d.children = null;
+      }
+    }
+
+    root.children.forEach(collapse);
+    update(root);
+  });
+
+  d3.select(self.frameElement).style("height", "800px");
+
+  var my_nodes;
+  function update(source) {
+
+    // Compute the new tree layout.
+    var nodes = tree.nodes(root).reverse(),
+        links = tree.links(nodes);
+
+    my_nodes = nodes;
+
+    // Normalize for fixed-depth.
+    nodes.forEach(function(d) { d.y = d.depth * 280; });
+
+    // Update the nodes…
+    var node = svg.selectAll("g.node")
+        .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+    // Enter any new nodes at the parent's previous position.
+    var nodeEnter = node.enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+        //.on("click", click);
+
+    nodeEnter.append("circle")
+        .attr("r", 1e-6)
+        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+    nodeEnter.append("text")
+        .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
+        .attr("dy", ".35em")
+        .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+        .text(function(d) { return d.name; })
+        .style("fill-opacity", 1e-6);
+
+    // Transition nodes to their new position.
+    var nodeUpdate = node.transition()
+        .duration(duration)
+        .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+    nodeUpdate.select("circle")
+        .attr("r", 4.5)
+        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+    nodeUpdate.select("text")
+        .style("fill-opacity", 1);
+
+    // Transition exiting nodes to the parent's new position.
+    var nodeExit = node.exit().transition()
+        .duration(duration)
+        .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+        .remove();
+
+    nodeExit.select("circle")
+        .attr("r", 1e-6);
+
+    nodeExit.select("text")
+        .style("fill-opacity", 1e-6);
+
+    // Update the links…
+    var link = svg.selectAll("path.link")
+        .data(links, function(d) { return d.target.id; });
+
+    // Enter any new links at the parent's previous position.
+    link.enter().insert("path", "g")
+        .attr("class", "link")
+        .attr("d", function(d) {
+          var o = {x: source.x0, y: source.y0};
+          return diagonal({source: o, target: o});
+        });
+
+    // Transition links to their new position.
+    link.transition()
+        .duration(duration)
+        .attr("d", diagonal);
+
+    // Transition exiting nodes to the parent's new position.
+    link.exit().transition()
+        .duration(duration)
+        .attr("d", function(d) {
+          var o = {x: source.x, y: source.y};
+          return diagonal({source: o, target: o});
+        })
+        .remove();
+
+    // Stash the old positions for transition.
+    nodes.forEach(function(d) {
+      d.x0 = d.x;
+      d.y0 = d.y;
+    });
+  }
+
+
+var expand = function(d) {
+  d.children = d._children;
+  // 만약에 d에 자식들이 있을 경우 모든 자식의 숨겨진 자식들(child._children)을 보여지는 자식들(child.children)으로 치환하는 코드 
+  if(d.children) {
+    for(var i = 0; i < d.children.length; i++) {
+      var child = d.children[i];
+      child.children = child._children;
+    }
+  }
+  update(d);
+};
+
+  var collapse = function(d) {
+    d.children = null;
+    update(d);
+  };
+
+  var selected;
+  var selectNodeByName = function(name) {
+    my_nodes.filter(function(d) {
+        if(d.name === name) { selected = d; }
+    });
+  };
+
+  var toggleNodeByName = function(name) {
+    selectNodeByName(name);
+    click(selected);
+  };
+
+  var all_cb = document.querySelectorAll('.dsnr');
+  d3.selectAll('.dsnr')
+    .on('change', function(d) {
+      for(var i = 0; i < all_cb.length; i++) {
+        var cb = all_cb[i];
+        if(cb.checked === true) {
+          selectNodeByName(cb.value);
+          expand(selected);
+        }
+        else {
+          selectNodeByName(cb.value);
+          collapse(selected);
+        }
+      }
+    });
+  
+
+  
+//이거는 옐로박스(#right)에 스크롤을 만들고 'list'에서 data를 가져와서 append하는 d3함수
+  d3.select('#aaa')
+    .on('click', function(){
+    var gallery = d3.select('#right').append('div');
+
+    var container = gallery.selectAll('.container')
+        .data(list, function(d) { return d.id; });  
+
+    container.enter().append('div')
+        .attr('class', 'container')
+
+    container.exit().remove();
+
+
+    container.selectAll('.picture')
+        .data(function(d) { return [d]; })
+        .enter().append('img')
+        .attr('class', 'picture')
+        .attr('src', function(d) { return d.imgsrc; });
+    container.selectAll('.text')
+        .data(function(d) { return [d]; })
+        .enter().append('p')
+        .attr('class', 'text')
+        .text(function(d) { return d.text; });
+
+    manage_scroll();
+  });
+
+  
+//옐로박스에서 스크롤의 위치에 따라 #left의 div 색깔이 변하는 함수
+  
+  var manage_scroll = function() {
+        var left = document.querySelector('#left');
+        var right = document.querySelector('#right');
+        var r_items = document.querySelectorAll('.container');
+        var l_items = document.querySelectorAll('.lt');
+        var ys = [];
+        var sumY = 0;
+        for(var i = 0; i < r_items.length; i++) {
+          ys.push(sumY);
+          sumY += r_items[i].getBoundingClientRect().height;
+        }
+
+        right.onscroll = function() {
+            for(var i = 0; i < l_items.length; i++) {
+              l_items[i].style.color = 'black';
+            }
+            for(var i = 0; i < ys.length; i++) {
+              var diff = Math.abs(ys[i] - right.scrollTop);
+              if(diff < r_items[i].getBoundingClientRect().height *0.2) {
+                var lt = l_items[i];
+                lt.style.color = 'blue';
+              }
+            }
+        }
+      }
+
+  
+  
+  //12디자이너와 그 작품들을 바이레벨 파티션레이아웃 안에 lebel로 이름 붙여서 넣는 d3시각화
+  var width = 1200,
+      height = 1200,
+      radius = Math.min(width, height) / 2;
+
+  var x = d3.scale.linear()
+      .range([0, 2 * Math.PI]);
+
+  var y = d3.scale.linear()
+      .range([0, radius]);
+
+  var color = d3.scale.category20c();
+
+  var svg2 = d3.select("#prefer").append("svg")
+      .attr("width", width)
+      .attr("height", height)
+    .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + (height / 2 ) + ")");
+
+  var partition = d3.layout.partition()
+      .value(function(d) { return d.size; });
+
+  var arc = d3.svg.arc()
+      .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+      .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+      .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+      .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+  d3.json("ctreeDesigner.json", function(error, root) {
+    var g = svg2.selectAll("g")
+        .data(partition.nodes(root))
+      .enter().append("g");
+
+    var path = g.append("path")
+      .attr("d", arc)
+      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+      .on("click", click);
+
+    var text = g.append("text")
+      .attr("transform", function(d) { return "rotate(" + computeTextRotation(d) + ")"; })
+      .attr("x", function(d) { return y(d.y); })
+      .attr("dx", "6") // margin
+      .attr("dy", ".35em") // vertical-align
+      .attr('fill','white')
+      .text(function(d) { return d.name; });
+
+    function click(d) {
+      // fade out all text elements
+      text.transition().attr("opacity", 0);
+
+      path.transition()
+        .duration(750)
+        .attrTween("d", arcTween(d))
+        .each("end", function(e, i) {
+            if (e.x >= d.x && e.x < (d.x + d.dx)) {
+              var arcText = d3.select(this.parentNode).select("text");
+              // fade in the text element and recalculate positions
+              arcText.transition().duration(750)
+                .attr("opacity", 1)
+                .attr("transform", function() { return "rotate(" + computeTextRotation(e) + ")" })
+                .attr("x", function(d) { return y(d.y); });
+            }
+        });
+    }
+  });
+
+  d3.select(self.frameElement).style("height", height + "px");
+
+
+  function arcTween(d) {
+    var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+        yd = d3.interpolate(y.domain(), [d.y, 1]),
+        yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+    return function(d, i) {
+      return i
+          ? function(t) { return arc(d); }
+          : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+    };
+  }
+
+  function computeTextRotation(d) {
+    return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
+  }
+
+
+</script>
+</html>
